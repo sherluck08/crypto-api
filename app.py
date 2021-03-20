@@ -11,7 +11,7 @@ def home():
     return "<h1>Hello world</h1>"
 
 
-@app.route("/trend")
+@app.route("/trending-coin")
 def trending_coin():
 
     trending_coin_data = get_trending_coin_data()
