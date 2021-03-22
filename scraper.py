@@ -12,7 +12,7 @@ def get_trending_coin_data():
 
     for row in rows:
         name = row.select('td p')[1].text
-
+        symbol = row.select_one('.coin-item-symbol').text
         price = float(row.select('td')[3].text.replace(
             "$", "").replace("<", ""))
         change_in_24h = float(row.select('td')[4].text.replace("%", ""))
@@ -25,6 +25,7 @@ def get_trending_coin_data():
 
         d = {
             "name": name,
+            "symbol": symbol,
             "price": price,
             "24h": change_in_24h,
             "7d": change_in_7d,
