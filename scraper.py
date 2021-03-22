@@ -12,7 +12,9 @@ def get_trending_coin_data():
 
     for row in rows:
         name = row.select('td p')[1].text
-        price = float(row.select('td')[3].text.replace("$", ""))
+
+        price = float(row.select('td')[3].text.replace(
+            "$", "").replace("<", ""))
         change_in_24h = float(row.select('td')[4].text.replace("%", ""))
         change_in_7d = float(row.select('td')[5].text.replace("%", ""))
         market_cap = row.select('td')[7].text.replace(
