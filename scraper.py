@@ -14,14 +14,16 @@ def get_trending_coin_data():
         name = row.select('td p')[1].text
         symbol = row.select_one('.coin-item-symbol').text
         price = float(row.select('td')[3].text.replace(
-            "$", "").replace("<", ""))
-        change_in_24h = float(row.select('td')[4].text.replace("%", ""))
-        change_in_7d = float(row.select('td')[5].text.replace("%", ""))
+            "$", "").replace("<", "").replace(",", ""))
+        change_in_24h = float(row.select(
+            'td')[4].text.replace("%", "").replace(",", ""))
+        change_in_7d = float(row.select(
+            'td')[5].text.replace("%", "").replace(",", ""))
         market_cap = row.select('td')[7].text.replace(
-            ",", "").replace("$", "").replace("--", "")
+            ",", "").replace("$", "").replace("--", "").replace(",", "")
         market_cap = float(market_cap) if market_cap else ""
         volume = float(row.select('td')[8].text.replace(
-            ",", "").replace("$", ""))
+            ",", "").replace("$", "").replace(",", ""))
 
         d = {
             "name": name,
