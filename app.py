@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup as BS
-from scraper import get_trending_coin_data
+from scraper import get_trending_coin_data, get_top_coins
 
 app = Flask("__init__")
 
@@ -18,6 +18,15 @@ def trending_coin():
 
     return jsonify({
         "trending": trending_coin_data
+    })
+
+
+@app.route("/top-coins")
+def top_coins():
+
+    top_coins_data = get_top_coins()
+    return jsonify({
+        "top_coins": top_coins_data
     })
 
 
