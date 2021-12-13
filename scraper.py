@@ -17,17 +17,14 @@ def get_page_source_code(url):
     header = {
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Safari/537.3"}
     response = requests.get(url, headers=header)
-    soup = BS(response.content, "html.parser")
-    return soup
+    return BS(response.content, "html.parser")
 
 
 def convert_script_tag_to_json(script_tag):
 
     data = str(script_tag).replace(
         "</script>", "").replace('<script id="__NEXT_DATA__" type="application/json">', "")
-    json_data = json.loads(data)
-
-    return json_data
+    return json.loads(data)
 
 
 def get_trending_coin_data():
